@@ -1,7 +1,11 @@
 use clap::{Parser, Subcommand};
 
 #[derive(Parser, Debug)]
-#[command(name = "rust-eth-mempool-lab", version, about = "Ethereum mempool/block observer")]
+#[command(
+    name = "rust-eth-mempool-lab",
+    version,
+    about = "Ethereum mempool/block observer"
+)]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
@@ -14,14 +18,21 @@ pub enum Commands {
         #[arg(long, default_value_t = 5)]
         blocks: u64,
     },
-    /// Sample pending txs for a duration (placeholder for now)
+    /// Sample pending txs for a duration
     MempoolSample {
         #[arg(long, default_value_t = 15)]
         duration_secs: u64,
+        #[arg(long, default_value_t = 500)]
+        max: u64,
     },
     /// Print top senders by tx count
     TopSenders {
         #[arg(long, default_value_t = 10)]
+        limit: u64,
+    },
+    /// Print recent transactions
+    RecentTxs {
+        #[arg(long, default_value_t = 20)]
         limit: u64,
     },
     /// Gas price stats over last N blocks
