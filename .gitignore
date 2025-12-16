@@ -1,0 +1,24 @@
+# Rust build artifacts
+/target/
+**/*.rs.bk
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# SQLite databases and local data
+/data/
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Editor / OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Temp files
+/tmp/
